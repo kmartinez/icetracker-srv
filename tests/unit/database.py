@@ -9,7 +9,7 @@ class Database:
         self.connection = pymysql.connect(
             host='localhost',
             user='root',
-            password='iceland',
+            password='PASSWORD',
             cursorclass=pymysql.cursors.DictCursor
         )
         print("Database connected")
