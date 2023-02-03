@@ -1,0 +1,72 @@
+.accordion-vh-100 {
+    height: 93vh;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.accordion-vh-100 .accordion-item.show {
+    flex-grow: 1;
+}
+
+/*.graph {*/
+/*    height: 40vh;*/
+/*}*/
+
+/*#graph-div {*/
+/*    margin: 12px;*/
+/*}*/
+
+.vh-95 {
+    height: 95vh;
+}
+
+body {
+    overflow-x: hidden;
+    /*overflow-y: hidden;*/
+}
+
+.chart-container {
+    padding: 11px 11px 11px 11px;
+}
+
+input {
+    cursor: text;
+}
+
+input[type="color"] {
+    height: 2.4em;
+    cursor: pointer;
+}
+
+.form-label, .input-group-text {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.bg-highlight {
+    background-color: #e7f1ff !important;
+}
+
+.border-highlight {
+    border-color: #e7f1ff !important;
+}
+
+div[id^="y2Axis"], label[id^="y2AxisStylingLabel"] {
+    display: none;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/*div[class="row"] {*/
+/*    outline: 1px dotted rgba(0, 0, 0, 0.25);*/
+/*}*/
+
+/*div[class^="col"] {*/
+/*    background-color: rgba(255, 0, 0, 0.2);*/
+/*    outline: 1px dotted rgba(0, 0, 0, 0.5);*/
+/*}*/

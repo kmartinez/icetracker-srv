@@ -1,0 +1,80 @@
+{% extends "index.html" %}
+
+{% block graphs %}
+    <script src="/static/api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <script src="https://github.com/chartjs/chartjs-plugin-zoom/releases/download/v2.0.0/chartjs-plugin-zoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+
+    <div class="row row-cols-2 vh-95">
+        {% for i in range(6) %}
+            <div class="col chart-container" id="cell{{ i }}" style="width: 100%; height: 50%;">
+                <canvas id="graph{{ i }}" class="graph"></canvas>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        let selectedGraph;
+        let highlightedGraph;
+        let chartContainer = $(".chart-container");
+        let startX;
+        let startY;
+        let limit = 10;
+
+        // Add click-to-select functionality to each graph container
+        chartContainer.click(function (e) {
+            // Extract ID of selected cell
+            let id = parseInt(e["currentTarget"].id.replace("cell", ""));
+
+        });
+
+        // Highlight moused-over graphs with a border to show that they can be clicked
+        chartContainer.mouseenter(function (e) {
+            let id = parseInt(e["currentTarget"].id.replace("cell", ""));
+
+            highlightGraph(id);
+        });
+
+        chartContainer.mouseleave(function (e) {
+            let id = parseInt(e["currentTarget"].id.replace("cell", ""));
+
+            highlightGraph(id);
+        });
+
+        chartContainer.mousedown(function (e) {
+            startX = e.pageX;
+            startY = e.pageY;
+
+            let id = parseInt(e["currentTarget"].id.replace("cell", ""));
+
+            document.getElementById(`cell${id}`).style.cursor = "grabbing";
+        });
+
+        // Show panning/zooming as grabbing on cursor
+        chartContainer.mouseup(function (e) {
+            const deltaX = Math.abs(e.pageX - startX);
+            const deltaY = Math.abs(e.pageY - startY);
+            let id = parseInt(e["currentTarget"].id.replace("cell", ""));
+
+            if (deltaX < limit && deltaY < limit) {
+                selectGraph(id);
+            } else {
+                document.getElementById(`cell${id}`).style.cursor = "grab";
+            }
+        });
+
+        // Add graphs from local storage on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            for (let i = 0; i < 6; i++) {
+                let config = JSON.parse(localStorage.getItem(`graph${i}`));
+
+                if (config) {
+                    addGraph(config);
+                }
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "gdp-glacier-monitor"
+version = "0.1.0"
+description = ""
+authors = ["Marcus Corbin <mgc1g18@soton.ac.uk>",
+           "Michael Jones <mwj2g19@soton.ac.uk>",
+           "Christian Kuhlmann <ck6g19@soton.ac.uk>",
+           "Elliott Weaver <ebw1g19@soton.ac.uk>",
+           "Richard Wells <rw3g19@soton.ac.uk>"]
+readme = "README.md"
+packages = [{include = "gdp_glacier_monitor"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.2.2"
+bootstrap-flask = "^2.1.0"
+flask-fontawesome = "^0.1.5"
+cbor2 = "^5.4.3"
+peewee = "^3.15.4"
+pymysql = "^1.0.2"
+requests = "^2.28.1"
+paste = "^3.5.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

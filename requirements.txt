@@ -1,0 +1,13 @@
+Python 3 modules:
+    bleach
+    Bootstrap-Flask
+    cbor2
+    cryptography
+    flask
+    flask_fontawesome
+    haversine
+    numpy
+    Paste
+    peewee
+    PyMySQL
+    waitress
